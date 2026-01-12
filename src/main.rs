@@ -1,17 +1,14 @@
-use std::net::SocketAddr;
-
 use bytes::Bytes;
-use http_body_util::{combinators::BoxBody, BodyExt, Empty, Full};
+use http_body_util::{BodyExt, Empty, Full, combinators::BoxBody};
 use hyper::service::service_fn;
 use hyper::upgrade::Upgraded;
 use hyper::{Method, Request, Response};
-
 use hyper_util::rt::TokioIo;
+use std::net::SocketAddr;
 use tokio::net::{TcpListener, TcpStream};
 
 type HTTP1ClientBuilder = hyper::client::conn::http1::Builder;
 type HTTP1ServerBuilder = hyper::server::conn::http1::Builder;
-
 
 // To try:
 // 1. cargo run
